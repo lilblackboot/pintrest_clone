@@ -30,7 +30,7 @@ const saveUserInfo=async ()=>{
   }
 }
 
-
+const userImageSrc = session?.user?.image || "/pfp.png";
 
 
   return (
@@ -47,7 +47,7 @@ const saveUserInfo=async ()=>{
         <HiSearch className='text-[25px] text-gray-500 md:hidden'/>
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
-        {session?.user?  <Image src={session?.user?.image||"./pfp.png"} alt='pfp' width={50} height={50}
+        {session?.user?  <Image src={userImageSrc} alt='pfp' width={50} height={50}
         className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'/> :
         <button onClick={() => signIn()} className='font-semibold p-2 px-4 rounded-full'>login</button>}
 
