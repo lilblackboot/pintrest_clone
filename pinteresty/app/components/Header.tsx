@@ -5,10 +5,12 @@ import { HiSearch,HiChat,HiBell } from 'react-icons/hi'
 import { signIn,useSession,signOut } from 'next-auth/react'
 import app from './../Shared/firebaseConfig'
 import {doc,setDoc,getFirestore} from 'firebase/firestore'
+import { useRouter } from 'next/navigation'
 
 
 function Header() {
-  const { data: session } = useSession()
+const { data: session } = useSession()
+const router = useRouter()
   
 const db = getFirestore(app)
 console.log(db)
@@ -48,7 +50,7 @@ const userImageSrc = session?.user?.image || "/pfp.png";
         <HiBell className='text-[40px] text-gray-500'/>
         <HiChat className='text-[40px] text-gray-500'/>
         {session?.user?  <Image src={userImageSrc} alt='pfp' width={50} height={50}
-        className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'/> :
+        className='hover:bg-gray-300 p-2 rounded-full cursor-pointer' onClick={()=>{router.push('/'+session?.user?.email)}}/> :
         <button onClick={() => signIn()} className='font-semibold p-2 px-4 rounded-full'>login</button>}
 
 
