@@ -40,7 +40,9 @@ const userImageSrc = session?.user?.image || "/pfp.png";
         <Image src='/logo.png' alt='logo' width={50} height={50}
         className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'/>
         <button className='bg-black text-white p-2 px-4 rounded-full'>home</button>
-        <button className='font-semibold p-2 px-4 rounded-full'>create</button>
+        <button className='font-semibold p-2 px-4 rounded-full' onClick={()=>{
+          router.push('/pin-builder')
+        }}>create</button>
         <div className='w-full bg-[#e9e9e9] p-3 flex hidden md:flex gap-3 items-center rounded-full'>
             <HiSearch className='text-[25px] text-gray-500'/>
             <input type='text' placeholder='search'
